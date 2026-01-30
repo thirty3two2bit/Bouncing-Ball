@@ -1,30 +1,26 @@
-# Bouncing Ball
+# Bouncing Ball Playground
 
 ## About
-I’m building a tiny interactive art playground and I’d love to see your creativity on top of a simple base.
+This is a tiny creative-coding playground built as a **single HTML file**.
 
-Your canvas is a single ball bouncing under gravity inside a box. Make it prettier, weirder, scarier—anything you like.
-Add trails, particles, colors, sound, controls, obstacles, or entirely change the vibe. Feel free to experiment with the code as needed.
+Your canvas is a single ball bouncing under the effect of gravity.
+The goal of this project is not complexity, but experimentation.
+
+Make it prettier, stranger, scarier, or more playful.
+Add colors, trails, effects, controls, or entirely change how it feels.
+Feel free to modify the code in any way.
+
+This repository is meant for practicing:
+- basic HTML
+- basic JavaScript
+- simple physics
+- Git & GitHub workflows (commits, branches, PRs)
+
+---
 
 ## How to run
-Just open `index.html` in a browser.
+There is **no setup** and **no dependencies**.
 
-Tip: For a local server (optional):
-- VS Code → “Live Server” extension
-- or `python -m http.server` and open the shown URL
-
-## Controls
-- Click: move ball + random kick
-- R: reset
-- P: pause
-- Arrow Up/Down: gravity
-- Arrow Left/Right: bounciness (restitution)
-
-## Ideas for features (pick one!)
-- Add a trail effect (fade the previous frames)
-- Add particles on impact
-- Add sliders for gravity and bounciness
-- Add obstacles/platforms
-- Add sound on bounce (with a mute toggle)
-- Add themes (dark / neon / pastel)
-- Add multiple balls
+Just open the file:
+```text
+index.html
