@@ -1,31 +1,73 @@
 <!doctype html>
 <html lang="en">
-  <head>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script type="text/javascript" src="app.js"></script>
-		<link rel="stylesheet" href="app.css" type="text/css" />
+<head>
+  <meta charset="UTF-8" />
+  <title>Bouncing Ball Playground</title>
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Bouncing Ball Playground</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header class="topbar">
-      <h1>Bouncing Ball Playground</h1>
-      <p class="hint">
-        Click to reposition • Press <kbd>R</kbd> to reset • Press <kbd>P</kbd> to pause
-      </p>
-    </header>
+  <!-- CSS  -->
+  <style>
+    body {
+      margin: 0;
+      background: #0b0e14;
+      color: white;
+      font-family: system-ui, sans-serif;
+      display: grid;
+      place-items: center;
+      height: 100vh;
+    }
 
-    <main class="stage">
-      <canvas id="canvas" aria-label="Bouncing ball canvas"></canvas>
-    </main>
+    canvas {
+      width: 800px;
+      height: 500px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      background: rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
 
-    <footer class="footer">
-      <span>v1 base: gravity + bounce + simple controls</span>
-    </footer>
+  <canvas id="canvas"></canvas>
 
-    <script src="script.js"></script>
-  </body>
+  <!-- JS  -->
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    function resize() {
+      canvas.width = canvas.clientWidth;
+      canvas.height = canvas.clientHeight;
+    }
+    resize();
+
+    const ball = { x: 200, y: 100, r: 15, vx: 200, vy: 0 };
+    const gravity = 900;
+
+    let last = performance.now();
+
+    function loop(t) {
+      const dt = (t - last) / 1000;
+      last = t;
+
+      ball.vy += gravity * dt;
+      ball.x += ball.vx * dt;
+      ball.y += ball.vy * dt;
+
+      if (ball.y + ball.r > canvas.height) {
+        ball.y = canvas.height - ball.r;
+        ball.vy *= -0.8;
+      }
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
+      ctx.fillStyle = "dodgerblue";
+      ctx.fill();
+
+      requestAnimationFrame(loop);
+    }
+
+    requestAnimationFrame(loop);
+  </script>
+</body>
 </html>
