@@ -16,6 +16,13 @@
       height: 100vh;
     }
 
+  button {
+    margin: 12px;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
     canvas {
       width: 800px;
       height: 500px;
@@ -26,6 +33,7 @@
   </style>
 </head>
 <body>
+  <button id="resetBtn">Reset</button>
 
   <canvas id="canvas"></canvas>
 
@@ -33,6 +41,18 @@
   <script>
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
+    const ball = { x: 200, y: 100, r: 15, vx: 200, vy: 0 };
+    const gravity = 900;
+    function resetBall() {
+      ball.x = 200;
+      ball.y = 100;
+      ball.vx = 200;
+      ball.vy = 0;
+
+  // clear canvas so old trails disappear
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    document.getElementById("resetBtn").addEventListener("click", resetBall);
 
     function resize() {
       canvas.width = canvas.clientWidth;
@@ -40,8 +60,7 @@
     }
     resize();
 
-    const ball = { x: 200, y: 100, r: 15, vx: 200, vy: 0 };
-    const gravity = 900;
+
 
     let last = performance.now();
 
@@ -58,7 +77,8 @@
         ball.vy *= -0.8;
       }
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "rgba(11, 14, 20, 0.18)"; // match page background, low alpha
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.beginPath();
       ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
       ctx.fillStyle = "dodgerblue";
