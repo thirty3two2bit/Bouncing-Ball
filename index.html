@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+		<link rel="stylesheet" href="app.css" type="text/css" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Bouncing Ball Playground</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Bouncing Ball Playground</h1>
+      <p class="hint">
+        Click to reposition • Press <kbd>R</kbd> to reset • Press <kbd>P</kbd> to pause
+      </p>
+    </header>
+
+    <main class="stage">
+      <canvas id="canvas" aria-label="Bouncing ball canvas"></canvas>
+    </main>
+
+    <footer class="footer">
+      <span>v1 base: gravity + bounce + simple controls</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
